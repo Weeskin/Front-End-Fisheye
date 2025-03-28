@@ -1,52 +1,139 @@
-@import url("photographer.css");
-
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+.page {
+    margin: 0 auto;
+    padding: 30px 20px 20px;
+    max-width: 1400px;
 }
-
 
 header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    padding : 0 120px;
+    height: 50px;
 }
 
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
+header a{
+    position: relative;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+header a:focus:not(:hover){
+    outline: 2px solid var(--color-secondary)
+}
+
+header a::before{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-secondary);
+    transition: width .2s ease-in-out;
+}
+
+header a:hover::before{
+    width: 80%;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    width: clamp(13rem, 15vw, 20rem);
+}
+
+h1 {
+    color: var(--color-primary);
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-weight: 100;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
-}
-
-.photographer_section article {
-    justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.photographer_section article {
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer_section article  a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
+.photographer-card__img{
+    height: clamp(20rem, 18vw, 22rem);
+    width: clamp(20rem, 18vw, 22rem);
     border-radius: 50%;
+}
+
+.photographer-card__name{
+    position: relative;
+    margin-top: 10px;
+    color: var(--color-tertiary);
+    font-size: clamp(2.5rem, 3.2vw, 3.2rem);
+}
+
+.photographer-card__name::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-secondary);
+    transition: width .2s ease-in-out;
+}
+
+article a:hover .photographer_name::before{
+    width: 80%;
+}
+
+.photographer-card__location{
+    color: var(--color-primary);
+    font-size: clamp(1.8rem, 2vw, 2rem);
+}
+
+.photographer-card__tagline,
+.photographer-card__price{
+    font-size: clamp(1.5rem, 1.8vw, 1.8rem);
+}
+.photographer-card__price{
+    color: var(--color-dark-medium);
+}
+
+@media screen and (max-width: 1040px) {
+    header{
+        flex-direction: column;
+    }
+    .photographer_section article {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    header{
+        padding: 0;
+    }
+    .photographer_section {
+        margin-top: 30px;
+        gap: 20px;
+    }
+    .photographer_section article {
+        width: 100%;
+    }
 }
