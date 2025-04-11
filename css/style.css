@@ -116,6 +116,16 @@ article a:hover .photographer_name::before{
     color: var(--color-dark-medium);
 }
 
+.btn{
+    font-size: clamp(1.8rem, 2vw, 2rem);
+    font-weight: bold;
+    color: var(--color-light);
+    padding: 15px;
+    height: 50px;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 1040px) {
     header{
         flex-direction: column;

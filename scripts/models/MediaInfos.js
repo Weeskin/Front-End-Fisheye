@@ -8,6 +8,4 @@ export default class MediaInfos {
         this.price = data.price;
         this.alt = data.alt;
     }
-
-    getDomElement() {}
-};
+}
