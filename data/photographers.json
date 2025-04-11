@@ -63,7 +63,8 @@
 			"image": "Fashion_Yellow_Beach.jpg",
 			"likes": 62,
 			"date": "2011-12-08",
-			"price": 55
+			"price": 55,
+			"alt" : "Woman wearing yellow overall in front of basketball court"
 		},
 		{
 			"id": 8520927,
@@ -72,7 +73,8 @@
 			"image": "Fashion_Urban_Jungle.jpg",
 			"likes": 11,
 			"date": "2011-11-06",
-			"price": 55
+			"price": 55,
+			"alt" : "Woman wearing a green overall posing on a bridge in the middle of the city"
 		},
 		{
 			"id": 9025895,
@@ -81,7 +83,8 @@
 			"image": "Fashion_Pattern_on_Pattern.jpg",
 			"likes": 72,
 			"date": "2013-08-12",
-			"price": 55
+			"price": 55,
+			"alt": "Front-facing woman holding red handbag and wearing yellow overall"
 		},
 		{
 			"id": 9275938,
@@ -90,7 +93,8 @@
 			"image": "Event_WeddingGazebo.jpg",
 			"likes": 69,
 			"date": "2018-02-22",
-			"price": 55
+			"price": 55,
+			"alt": "A wedding gazebo nestled in the heart of a lush garden"
 		},
 		{
 			"id": 2053494,
@@ -99,7 +103,8 @@
 			"image": "Event_Sparklers.jpg",
 			"likes": 2,
 			"date": "2020-05-25",
-			"price": 55
+			"price": 55,
+			"alt": "View of the newlyweds from behind, their figures illuminated by a gentle cascade of twinkling lights."
 		},
 		{
 			"id": 7324238,
@@ -108,7 +113,8 @@
 			"image": "Event_18thAnniversary.jpg",
 			"likes": 33,
 			"date": "2019-06-12",
-			"price": 55
+			"price": 55,
+			"alt": "Table set up for the 18th birthday celebration"
 		},
 		{
 			"id": 8328953,
@@ -117,7 +123,8 @@
 			"video": "Art_Wooden_Horse_Sculpture.mp4",
 			"likes": 24,
 			"date": "2011-12-08",
-			"price": 100
+			"price": 100,
+			"alt": "A wooden sculpture depicting a horse, with a majestic tree in the background."
 		  },
 		{
 			"id": 7502053,

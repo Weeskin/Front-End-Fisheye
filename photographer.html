@@ -1,37 +1,59 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html >
+
+<head >
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="description" content="" >
+    <title >Fisheye - Photographe</title >
+    <!--  CSS  -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-      <link rel="icon" type="image/png" href="assets/icons/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographerPage.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
-</html>
+    <link href="css/variables.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <!--  Favicon  -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" >
+</head >
+
+<body >
+    <div class="page" >
+        <header >
+            <a href="./index.html" >
+                <img src="assets/images/logo.webp" class="logo" alt="Fisheye Home page" aria-label="Return to home page"/>
+            </a >
+        </header >
+        <!-- Main -->
+    <main id="main" >
+        <section class="photograph-header" ></section >
+        <section class="photograph-medias"></section>
+    </main >
+        <!-- Modal -->
+
+
+
+        <!-- Script -->
+        <script src="./scripts/pages/photographerPage.js" type="module"></script>
+    </div >
+</body >
+</html >
+
+
+<!--    <div id="contact_modal" >-->
+<!--        <div class="modal" >-->
+<!--            <header >-->
+<!--                <h2 >Contactez-moi</h2 >-->
+<!--                <img src="assets/icons/close.svg" onclick="closeModal()" />-->
+<!--            </header >-->
+<!--            <form >-->
+<!--                <div >-->
+<!--                    <label >Prénom</label > <input />-->
+<!--                </div >-->
+<!--                <button class="contact_button" >Envoyer</button >-->
+<!--            </form >-->
+<!--        </div >-->
+<!--    </div >    -->

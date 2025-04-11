@@ -1,9 +1,9 @@
-import Api from "../api/Api.js";
+import ApiPhotographer from "../api/Api.js";
 import Photographer from "../models/Photographer.js";
 import PhotographerCard from "../templates/photographerCard.js";
 
 const photographersSection = document.querySelector(".photographer_section");
-const photographersApi = new Api("./data/photographers.json");
+const photographersApi = new ApiPhotographer("./data/photographers.json");
 
 async function displayPhotographers() {
     try {
