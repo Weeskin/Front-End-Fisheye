@@ -1,61 +1,40 @@
 <!DOCTYPE html>
 <html >
+    <head >
+        <meta charset="utf-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <meta name="description" content="" >
+        <title >Fisheye - Photographe</title >
+        <!--  CSS  -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="css/variables.css" rel="stylesheet" type="text/css" />
+        <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+        <!--  Favicon  -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" >
+    </head >
 
-<head >
-    <meta charset="utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <meta name="description" content="" >
-    <title >Fisheye - Photographe</title >
-    <!--  CSS  -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/variables.css" rel="stylesheet" type="text/css" />
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <!--  Favicon  -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" >
-</head >
-
-<body >
-    <div class="page" >
+    <body >
         <header >
             <a href="./index.html" >
                 <img src="assets/images/logo.webp" class="logo" alt="Fisheye Home page" aria-label="Return to home page"/>
             </a >
         </header >
         <!-- Main -->
-    <main id="main" >
-        <section class="photograph-header" ></section >
-        <section class="photograph-medias"></section>
-    </main >
-        <!-- Modal -->
-
-
+        <main >
+            <section class="photographer_profile_header" ></section >
+            <section class="photographer_profile_filter"></section>
+            <section class="photographer_profile_medias"></section>
+        </main >
 
         <!-- Script -->
-        <script src="./scripts/pages/photographerPage.js" type="module"></script>
+        <script src="scripts/pages/profilePage.js" type="module"></script>
         <!-- CDN Font Awesome -->
         <script src="https://kit.fontawesome.com/4a5424dcf3.js" crossorigin="anonymous"></script>
-    </div >
-</body >
+    </body >
 </html >
-
-
-<!--    <div id="contact_modal" >-->
-<!--        <div class="modal" >-->
-<!--            <header >-->
-<!--                <h2 >Contactez-moi</h2 >-->
-<!--                <img src="assets/icons/close.svg" onclick="closeModal()" />-->
-<!--            </header >-->
-<!--            <form >-->
-<!--                <div >-->
-<!--                    <label >Prénom</label > <input />-->
-<!--                </div >-->
-<!--                <button class="contact_button" >Envoyer</button >-->
-<!--            </form >-->
-<!--        </div >-->
-<!--    </div >    -->

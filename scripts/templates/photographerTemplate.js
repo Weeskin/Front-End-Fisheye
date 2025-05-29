@@ -1,4 +1,4 @@
-export default class PhotographerTemplate {
+class PhotographerTemplate {
     constructor(photographer) {
         this.photographer = photographer;
     }
@@ -18,3 +18,5 @@ export default class PhotographerTemplate {
         return photographerCard;
     }
 }
+
+export { PhotographerTemplate };

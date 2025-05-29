@@ -1,15 +1,14 @@
-import MediaInfos from "./MediaInfos.js";
+import { MediaInfos } from "./MediaInfos.js";
 
-export default class Image extends MediaInfos{
+export class Image extends MediaInfos {
     constructor(data) {
         super(data);
         this.image = data.image;
     }
 
-    getDomElement(photographer) {
-        this.photographer = photographer;
+    getMediaElement(photographer) {
         return `
-            <img class="gallery_thumbnail" src="./assets/images/photographers/samplePhotos-Small/${this.photographer.name}/${this.image}" alt="${this.alt}">
-        `
+            <img class="gallery_thumbnail" src="./assets/images/photographers/samplePhotos-Small/${photographer.name}/${this.image}" alt="${this.alt}">
+        `;
     }
 }

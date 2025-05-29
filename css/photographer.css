@@ -1,9 +1,21 @@
+/* =====================================================================
+  *                                                                    *
+  *                      PROFIL PHOTOGRAPHER                           *
+  *                                                                    *
+  *   Page du photographe après avoir cliqué dessus                    *
+  *   En 3 parties avec un aside en sticky pour le compteur de like.   *
+  *                                                                    *
+  =====================================================================*/
+
 main{
     padding: 0 120px;
 }
 
-/* PHOTOGRAPH HEADER */
-.photograph-header{
+/* ==========================================================
+   PHOTOGRAPH HEADER
+   ========================================================== */
+
+.photographer_profile_header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,19 +31,116 @@ main{
     color: var(--color-dark);
 }
 
+.photographer_profile__img{
+    height: clamp(10rem, 20vw, 20rem);
+    width: clamp(10rem, 20vw, 20rem);
+    border-radius: 50%;
+}
+
 .photographer_profile__infos{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.photographer-card__img{
-    height: clamp(10rem, 20vw, 20rem);
-    width: clamp(10rem, 20vw, 20rem);
+/* ==========================================================
+   FILTER
+   ========================================================== */
+.photographer_profile_filter{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    gap: 40px;
+    max-height: 200px;
+
+}
+.main_content_filter {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    gap: 10px;
 }
 
-/* PHOTOGRAPH MEDIAS - GALLERY */
-.photograph-medias{
+.main_content_filter h2{
+    font-weight: 100;
+    font-size: clamp(1.6rem, 3vw, 1.8rem);
+}
+
+.filter_section{
+    position: relative;
+    height: 100%;
+}
+
+.filter_section .dropdown {
+    z-index: 10;
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+.btn_drop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    background-color: var(--color-primary);
+}
+
+.dropdown_content {
+    background-color: var(--color-primary);
+    max-height: 0;
+    transition: max-height .1s ease-in-out;
+}
+
+.dropdown_content li{
+    position: relative;
+    width: 150px;
+}
+
+.dropdown_content li::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 1px;
+    background-color: var(--color-light);
+}
+
+.btn_drop,
+.dropdown_content li button{
+    height: 50px;
+    padding: 15px;
+    font-size: clamp(1.8rem, 2vw, 2rem);
+    color: var(--color-light);
+}
+
+.main_content_filter .filter_section .dropdown .dropdown_content li button {
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown_content li button:hover,
+.dropdown_content li button:focus,
+.btn_drop:hover,
+.btn_drop:focus{
+    background-color: var(--color-secondary);
+    color: black;
+}
+
+.curtain_effect {
+    max-height: 200px;
+}
+
+/* ==========================================================
+   GALLERY
+   ========================================================== */
+.photographer_profile_medias{
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -51,6 +160,23 @@ main{
     gap: 10px;
 }
 
+.gallery_card a{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.gallery_card a figure{
+    height: 260px;
+    transition: all .2s ease-in-out;
+}
+
+.gallery_card a:hover figure{
+    transform: scale(1.05);
+}
+
+.gallery_card a:focus:not(:hover){
+    outline: 2px solid var(--color-secondary);
+}
 .gallery_thumbnail{
     height: 100%;
     width: 100%;
@@ -88,6 +214,20 @@ main{
     color: var(--color-primary);
 }
 
+.animeCard{
+    animation: fade .2s ease-in-out;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    } to{
+          opacity: 1;
+      }
+}
+/* ==========================================================
+   LIKES COUNTER
+   ========================================================== */
 aside{
     position: sticky;
     bottom: 0;
@@ -105,7 +245,262 @@ aside{
     background-color: var(--color-secondary);
 }
 
-/* RESPONSIVE */
+/* ==========================================================
+   FORMULAIRE
+   ========================================================== */
+.modal_wrapper.wrapper {
+    position: fixed; /* Important pour couvrir toute la fenêtre */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond noir semi-transparent */
+    display: none; /* Initialement caché */
+    justify-content: center; /* Centre le formulaire horizontalement */
+    align-items: center; /* Centre le formulaire verticalement */
+    z-index: 1000; /* Pour être au-dessus du reste du contenu */
+}
+
+.modal_form {
+    position: relative;
+    border-radius: 5px;
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(-150px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.modal_wrapper.wrapper.open .modal_form {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal_form_title{
+    width: 100%;
+    font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.modal_form_title h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: normal;
+    font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.btn_close:hover::before{
+    color: var(--color-primary);
+}
+.btn_close:focus:not(:hover)::before{
+    outline: 2px solid var(--color-primary);
+}
+
+.btn_close::before{
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free", sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: var(--color-light);
+    font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.modal_form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.form_content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_content label {
+    color: var(--color-label);
+    font-size: clamp(1.8rem, 2vw, 2rem);
+}
+
+.form_content input {
+    height: 50px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form_content textarea {
+    border-radius: 5px;
+    height: 150px;
+    resize: none;
+    padding: 10px;
+}
+
+.form_content span{
+    color: var(--color-dark);
+    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+}
+
+.form_content input:invalid:focus,
+.form_content textarea:invalid:focus {
+    outline: 2px solid var(--color-primary);
+}
+
+.btn_submit{
+    max-width: 150px;
+}
+
+.btn_submit:hover,
+.btn_submit:focus {
+    outline: 2px solid var(--color-light);
+}
+
+/* ==========================================================
+   LIGHTBOX
+   ========================================================== */
+.lightbox_wrapper.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* width: 80%;
+    max-width: 1000px;
+    height: 90%;*/
+    background-color: var(--color-light);
+    margin-top: 20vh;
+    padding: 25px 60px 0;
+    border-radius: 5px;
+    opacity: 1;
+    transform: translateY(-150px);
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
+.lightbox_media{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.lightbox_media figcaption{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    color: var(--color-primary);
+}
+
+.lightbox_media img,
+.lightbox_media video{
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    max-height: calc(100% - 50px);
+}
+
+.lightbox_media video:focus{
+    outline: 2px solid var(--color-primary);
+}
+
+.btn_close_lightbox{
+    z-index: 100;
+    position: absolute;
+    top: 25px;
+    right: 5px;
+}
+
+.btn_close_lightbox::before{
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-primary);
+}
+
+.btn_previous,
+.btn_next{
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    border-radius: 5px;
+    transform: translateY(-50%);
+    padding: 5px;
+}
+
+.btn_next{
+    right: 10px;
+}
+
+.btn_previous{
+    left: 10px;
+}
+
+.btn_next::before,
+.btn_previous::before{
+    font-family:  "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-primary);
+}
+
+.btn_next::before{
+    content: "\f054";
+}
+
+.btn_previous::before{
+    content: "\f053";
+}
+
+.btn_previous:focus-visible:not(:hover),
+.btn_next:focus-visible:not(:hover){
+    outline: 2px solid var(--color-primary);
+}
+
+.btn_previous:hover::before,
+.btn_next:hover::before,
+.btn_close_lightbox:hover::before{
+    color: var(--color-secondary);
+}
+
+.invalid{
+    outline: 2px solid var(--color-primary);
+}
+
+.valid{
+    outline: 2px solid green;
+}
+
+.btn_next.active::before,
+.btn_previous.active::before,
+.btn_close_lightbox.active::before{
+    color: var(--color-secondary);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
 @media screen and (max-width: 1110px) {
     header{
         padding: 0 20px;
@@ -126,13 +521,32 @@ aside{
         top: 30px;
         right: 40px;
     }
+
+    .modal_form{
+        padding: 10px;
+        gap: 5px;
+        max-height: 100%;
+        overflow: auto;
+    }
+
+    .modal_form form{
+        gap: 5px;
+    }
+
+    .form_content input{
+        height: 40px;
+    }
+
+    .form_content textarea{
+        height: 80px;
+    }
 }
 
 @media screen and (max-width: 570px) {
     header{
         padding: 0;
     }
-    .photograph-header-infos{
+    .photograph-header__infos{
         gap: 2px;
     }
     .btn_cta{
@@ -144,10 +558,10 @@ aside{
 }
 
 @media screen and (max-width: 445px) {
-    .page{
+    body{
         padding: 10px;
     }
-    .photograph-header{
+    .photographer_profile_header{
         justify-content: space-between;
         padding: 10px;
     }
