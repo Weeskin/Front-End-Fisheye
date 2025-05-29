@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html >
-    <head >
-        <meta charset="utf-8" >
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-        <meta name="description" content="" >
-        <title >Fisheye - Photographe</title >
-        <!--  CSS  -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
-        <link href="css/variables.css" rel="stylesheet" type="text/css" />
-        <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-        <!--  Favicon  -->
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="Fisheye est une plateforme dédiée aux photographes indépendants, présentant leurs portfolios uniques et leur permettant d'entrer en contact avec des clients.">
+        <title>Fisheye - Photographe</title>
+
         <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" >
-    </head >
 
-    <body >
-        <header >
-            <a href="./index.html" >
-                <img src="assets/images/logo.webp" class="logo" alt="Fisheye Home page" aria-label="Return to home page"/>
-            </a >
-        </header >
-        <!-- Main -->
-        <main >
-            <section class="photographer_profile_header" ></section >
-            <section class="photographer_profile_filter"></section>
-            <section class="photographer_profile_medias"></section>
-        </main >
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 
-        <!-- Script -->
+        <link href="css/variables.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/photographer.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header role="banner"><a href="./index.html" aria-label="Retour à la page d'accueil de Fisheye">
+            <img src="assets/images/logo.webp" class="logo" alt="Logo de Fisheye">
+        </a>
+        </header>
+
+        <main id="mainContent">
+            <section class="photographer_profile_header" aria-labelledby="photographer-header-title"></section>
+            <section class="photographer_profile_filter" aria-labelledby="filter-section-title"></section>
+            <section class="photographer_profile_medias" aria-labelledby="media-section-title"></section>
+        </main>
+
         <script src="scripts/pages/profilePage.js" type="module"></script>
-        <!-- CDN Font Awesome -->
         <script src="https://kit.fontawesome.com/4a5424dcf3.js" crossorigin="anonymous"></script>
-    </body >
-</html >
+    </body>
+</html>

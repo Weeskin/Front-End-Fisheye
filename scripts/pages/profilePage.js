@@ -3,7 +3,6 @@ import { PhotographerProfilHeader } from "../templates/photographerProfileHeader
 import { PhotographerProfilMedias } from "../templates/photographerProfileMedias.js";
 import { Filter } from "../utils/filter.js";
 import { displayTotalLikes } from "../utils/likes.js";
-import { focusTrap } from "../utils/lightbox.js";
 
 async function displayProfilePage() {
     // --- Récupère l'ID du photographe depuis l'URL ---

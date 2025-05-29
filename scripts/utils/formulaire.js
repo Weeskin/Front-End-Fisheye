@@ -1,13 +1,19 @@
+import { createFocusTrap } from './focusTrap.js';
+
 export class Formulaire {
     constructor(photographerName) {
         // --- Stocke le nom du photographe pour l'afficher dans le formulaire ---
         this.photographerName = photographerName;
         // --- Crée l'élément HTML du formulaire modal ---
         this.formWrapper = this.createForm();
+        // -- Initialise le trap de focus pour le conteneur du formulaire ---
+        this.focusTrapInstance = createFocusTrap(this.formWrapper);
         // --- Initialise les écouteurs d'événements pour le formulaire ---
         this.initEventListeners();
-        // --- Ajoute un écouteur d'événement pour fermer le formulaire en cliquant en dehors ---
-        this.addBackgroundClickListener();
+        // --- Pour stocker l'élément qui a ouvert le formulaire ---
+        this.lastFocusedElement = null;
+        // --- Pour stocker la position de défilement ---
+        this.scrollPosition = 0;
     }
 
     createForm() {
@@ -16,6 +22,8 @@ export class Formulaire {
         modalWrapper.classList.add('modal_wrapper', 'wrapper');
         modalWrapper.setAttribute('aria-modal', 'true');
         modalWrapper.setAttribute('role', 'dialog');
+        modalWrapper.style.display = "none";
+
         // --- Définit le contenu HTML du formulaire modal ---
         modalWrapper.innerHTML = `
             <div class="modal_form" aria-describedby="formTitle">
@@ -59,40 +67,68 @@ export class Formulaire {
         // --- Sélectionne les éléments interactifs du formulaire ---
         const closeModalButton = this.formWrapper.querySelector(".btn_close");
         const form = this.formWrapper.querySelector('form');
-        const firstNameInput = this.formWrapper.querySelector("#firstname");
-        const lastNameInput = this.formWrapper.querySelector("#lastname");
-        const emailInput = this.formWrapper.querySelector("#email");
-        const messageInput = this.formWrapper.querySelector("#message");
 
         // --- Ajoute les écouteurs d'événements aux éléments interactifs ---
-        document.addEventListener('keyup', e => { if(e.key === 'Escape')  this.hideForm(); });
         closeModalButton.addEventListener('click', () => this.hideForm()); // Ferme le formulaire
         form.addEventListener('input', () => this.displayCustomMessage()); // Affiche les messages d'erreur personnalisés
-        form.addEventListener('submit', (event) => this.handleSubmit(event, firstNameInput, lastNameInput, emailInput, messageInput)); // Gère la soumission du formulaire
+        form.addEventListener('submit', (event) => {
+            const firstNameInput = this.formWrapper.querySelector("#firstname");
+            const lastNameInput = this.formWrapper.querySelector("#lastname");
+            const emailInput = this.formWrapper.querySelector("#email");
+            const messageInput = this.formWrapper.querySelector("#message");
+            this.handleSubmit(event, firstNameInput, lastNameInput, emailInput, messageInput)
+        } ); // Gère la soumission du formulaire
     }
 
-    addBackgroundClickListener() {
-        // --- Ajoute un écouteur d'événement au conteneur du formulaire pour permettre la fermeture en cliquant en dehors ---
-        this.formWrapper.addEventListener('click', (event) => {
-            if (event.target === this.formWrapper) {
+    handleGlobalListeners = (e) => {
+        if (this.formWrapper.style.display === 'flex') { // S'assure que le formulaire est ouvert
+            if (e.key === 'Escape') {
+                this.hideForm();
+            } else if (e.type === 'click' && e.target === this.formWrapper) {
                 this.hideForm();
             }
-        });
+        }
+    }
+
+    addGlobalListeners() {
+        document.addEventListener('keyup', this.handleGlobalListeners);
+        this.formWrapper.addEventListener('click', this.handleGlobalListeners);
+    }
+
+    removeGlobalListeners() {
+        document.removeEventListener('keyup', this.handleGlobalListeners);
+        this.formWrapper.removeEventListener('click', this.handleGlobalListeners);
     }
 
     showForm() {
+        this.lastFocusedElement = document.activeElement;
+
         // --- Affiche le formulaire modal ---
         this.formWrapper.style.display = "flex";
+
+        this.scrollPosition = window.scrollY;  // 1. Enregistre la position de défilement
+        document.body.style.top = `-${this.scrollPosition}px`; // 2. Décale le body vers le haut
+        document.body.classList.add('no-scroll'); // 3. Applique la classe no-scroll (qui contient position: fixed)
+
         // --- Ajoute une classe pour l'animation d'ouverture et met le focus sur le bouton de fermeture ---
         setTimeout(() => {
             this.formWrapper.classList.add('open');
-            this.formWrapper.querySelector(".btn_close").focus();
+            this.focusTrapInstance.activate();
+            this.addGlobalListeners();
         }, 0);
     }
 
     hideForm() {
         // --- Cache le formulaire modal ---
         this.formWrapper.style.display = "none";
+        this.formWrapper.classList.remove('open');
+
+        document.body.classList.remove('no-scroll');
+        document.body.style.top = '';
+        window.scrollTo(0, this.scrollPosition);
+
+        this.focusTrapInstance.deactivate();
+        this.removeGlobalListeners();
     }
 
     handleSubmit(event, firstName, lastName, email, message) {
@@ -110,8 +146,10 @@ export class Formulaire {
                 email: email.value,
                 message: message.value,
             };
+
             // --- Affiche les données du formulaire dans la console (à remplacer par une action réelle, comme l'envoi à un serveur) ---
             console.log(JSON.stringify(formDatas));
+
             // --- Réinitialise les classes de validité des champs ---
             this.formWrapper.querySelectorAll('.formField').forEach(input => input.classList.remove('valid'));
             // --- Réinitialise le formulaire ---

@@ -4,6 +4,14 @@ body {
     max-width: 1400px;
 }
 
+body.no-scroll {
+    overflow: hidden; /* Cache les barres de défilement et empêche le défilement */
+    position: fixed; /* Fixe la position du body pour éviter le défilement */
+    width: 100%; /* S'assure que le body prend toute la largeur */
+    height: 100%; /* S'assure que le body prend toute la hauteur */
+    padding-right: 32px;
+}
+
 header {
     display: flex;
     justify-content: space-between;
